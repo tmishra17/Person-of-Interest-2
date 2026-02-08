@@ -1,0 +1,25 @@
+[project]
+name = "person-of-interest-2"
+version = "0.1.0"
+description = "Person-of-Interest-2"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "deepface>=0.0.98",
+    "nicegui>=3.7.1",
+    "qdrant-client>=1.16.2",
+    "sentence-transformers>=5.2.2",
+    "streamlit>=1.54.0",
+    "torch>=2.10.0",
+    "transformers>=5.1.0",
+]
+
+[build-system]
+requires = ["hatchling>=1.24.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+only-include = ["person-of-interest.py"]
+
+[tool.hatch.build.targets.sdist]
+only-include = ["person-of-interest.py", "README.md", "pyproject.toml"]
