@@ -1,0 +1,14 @@
+** deconstructs dictionary
+
+# no classification needed, turning images and text into vector embeddings and points
+# in a vector space, where the semantic meanings of the text will be directly compared to the 
+# semantic meanings of the images
+
+
+# tokens are numeric representation of texts, words, images, Neural Networks only understand numbers, 
+# thus the tokens coverts the word/image in to a numerical representation
+# Attention mechanism assigns meaning by comparing tokens in data
+# embeddings are tokens converted into vector types
+
+
+# sentence transformers vs transformers with mean pooling

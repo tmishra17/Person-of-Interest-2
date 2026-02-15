@@ -1,3 +1,7 @@
 img_align_dataset/
 .venv/
 __pycache__/
+deepface_test.py
+qdrant_storage/
+folder_path.py
+.env
