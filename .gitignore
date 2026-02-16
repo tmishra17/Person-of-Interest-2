@@ -5,3 +5,5 @@ deepface_test.py
 qdrant_storage/
 folder_path.py
 .env
+Document.txt
+cropped_images/
