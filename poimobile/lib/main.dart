@@ -134,19 +134,25 @@ class _POIMobileAppState extends State<POIMobileApp> {
               Expanded( 
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
+                    crossAxisCount: 3,
                   ),
                   itemCount: searchResults.length,
                   itemBuilder: (context, index) {
                     final data = searchResults[index];
                     final imageUrl = baseUrl + data['image_url'];
-                    final image = Image.network(imageUrl);
                     return Column(
                       children: [
-                        Container(
-                          // padding: EdgeInsets.all(10),
-                          // margin: EdgeInsets.symmetric(vertical: 100),
-                          child: image,
+                        Expanded(
+                          child: Container(
+                            width: double.infinity,
+                            padding: EdgeInsets.all(10),
+                            // margin: EdgeInsets.symmetric(vertical: 100),
+                            child: Image.network(imageUrl,
+                              fit: BoxFit.cover,
+                              width: double.infinity,
+                              height: double.infinity,
+                            ),
+                          ),
                         ),
                         Text(
                           "Similarity Score: $simScore",
