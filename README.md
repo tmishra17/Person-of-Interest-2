@@ -9,10 +9,17 @@ This project takes in user description of a person (tall man with glasses and lo
 
 ## Powered by
 - QdrantDB 
-- SIGLIB2 for text image understanding
+- FastAPI for microservices
+- CLIP for text image understanding
 - Streamlit UI
+- Deepface for face detection
+- Flutter for android and IOS support
+
+## Features
+- Accessible on Android Devices
+- API for semantic search
 
 ## Future Features
 - Removing Toxic queries (insults, cussing, keyboard smashing) using LLM 
-- Accessible on Android Devices
 - Allow image import to find images semantically similar to import image
+- Replacing streamlit with NiceGUI
