@@ -133,8 +133,12 @@ class _POIMobileAppState extends State<POIMobileApp> {
               // take up all of the space of the column
               Expanded( 
                 child: GridView.builder(
+                  physics: const BouncingScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
+                    childAspectRatio: 0.75,  // width/height of each cell (e.g. 0.75 = slightly taller)
+                    mainAxisSpacing: 8,
+                    crossAxisSpacing: 9,
                   ),
                   itemCount: searchResults.length,
                   itemBuilder: (context, index) {
