@@ -13,3 +13,5 @@
 
 # sentence transformers vs transformers with mean pooling
 
+. in python module means look in current/relative directory
+

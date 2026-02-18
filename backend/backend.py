@@ -20,3 +20,6 @@ async def search(query: str, sim_score: float, results: int):
     # json format
     return [{"score": r.score, 'image_url': "/images/" + os.path.basename(r.payload['image_path'])} for r in res]
 
+@app.get("/")
+async def index():
+    return {"status": "ok", "docs": "/docs"}
