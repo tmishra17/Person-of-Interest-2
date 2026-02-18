@@ -66,5 +66,7 @@ def index():
     ui.switch('Dark Mode', value=True).bind_value(dark)
 
     main()
+
+host = os.getenv("0.0.0.0", "localhost")
 if __name__ in ('__main__', '__mp_main__'):
-    ui.run(host="localhost", title="Person of Interest")
+    ui.run(host=host, title="Person of Interest")
