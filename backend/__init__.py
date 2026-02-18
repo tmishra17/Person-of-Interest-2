@@ -1,3 +1,3 @@
-from .backend import search
+from .backend import search, app
 
-__all__ = ['search']
+__all__ = ['search', 'app']
