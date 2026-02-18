@@ -6,6 +6,7 @@ from sentence_transformers import SentenceTransformer
 from PIL import Image
 import glob
 import os
+from .QDRANT_DATA import URL, API_KEY
 from nicegui import ui
 
 VECTOR_SIZE = 512
@@ -15,7 +16,12 @@ class PersonOfInterest:
     def __init__(self) -> None:
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.model = SentenceTransformer("clip-ViT-B-32", device=self.device)
-        self.qdrant_client = QdrantClient(host="localhost", port=6333)
+        # self.qdrant_client = QdrantClient(host="localhost", port=6333)
+        self.qdrant_client = QdrantClient(
+            url=URL, 
+            api_key=API_KEY,
+        )
+
 
     def semantic_search(self, query: str, sim_score, results) -> list[ScoredPoint]:
         """

@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from .PersonOfInterest import PersonOfInterest
 import os
+
 app = FastAPI()
 POI = PersonOfInterest()
 
