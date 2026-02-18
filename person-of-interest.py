@@ -4,7 +4,6 @@ from turtle import onclick, title
 from PIL import Image
 import os
 from dotenv import load_dotenv
-# from backend.backend import search
 from backend.PersonOfInterest import PersonOfInterest
 from nicegui import ui
 from functools import lru_cache

@@ -5,6 +5,7 @@ import os
 app = FastAPI()
 POI = PersonOfInterest()
 
+# for flutter progra
 IMAGES_DIR = os.path.join(os.getenv("FOLDER_PATH") or os.getcwd(), "cropped_images")
 app.mount("/images", StaticFiles(directory=IMAGES_DIR), name="images")
 

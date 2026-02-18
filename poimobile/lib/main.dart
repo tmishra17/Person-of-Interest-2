@@ -76,9 +76,12 @@ class _POIMobileAppState extends State<POIMobileApp> {
                   decoration: InputDecoration(
                     hintText: "Enter a description",
                     hintStyle: TextStyle(color: Colors.grey),
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30.0)
+                    ),
                     filled: true,
-                    fillColor: Colors.white
+                    fillColor: Colors.white,
+                    
                   ),
                   onSubmitted: (query) => {
                     getSearchResults(query)
@@ -151,10 +154,14 @@ class _POIMobileAppState extends State<POIMobileApp> {
                             width: double.infinity,
                             padding: EdgeInsets.all(10),
                             // margin: EdgeInsets.symmetric(vertical: 100),
-                            child: Image.network(imageUrl,
-                              fit: BoxFit.cover,
-                              width: double.infinity,
-                              height: double.infinity,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15.0),
+                              child: Image.network(imageUrl,
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                                height: double.infinity,
+                                
+                              ),
                             ),
                           ),
                         ),
