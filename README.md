@@ -6,6 +6,16 @@ This project takes in user description of a person (tall man with glasses and lo
 - User types descriptive query, selects similarity threshold, and number of results
 - Application returns search results semantically similar to the user's query
 
+## Setting up environment
+- To setup the environment first run
+    ```
+    uv sync --upgrade
+    ```
+- Then to start the server run
+    ```
+    python3 person-of-interest.py
+    ```
+
 
 ## Powered by
 - QdrantDB 
@@ -14,6 +24,7 @@ This project takes in user description of a person (tall man with glasses and lo
 - Streamlit UI
 - Deepface for face detection
 - Flutter for android and IOS support
+- NiceGUI for the frontend
 
 ## Features
 - Accessible on Android Devices
@@ -22,4 +33,3 @@ This project takes in user description of a person (tall man with glasses and lo
 ## Future Features
 - Removing Toxic queries (insults, cussing, keyboard smashing) using LLM 
 - Allow image import to find images semantically similar to import image
-- Replacing streamlit with NiceGUI
