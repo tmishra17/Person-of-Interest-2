@@ -10,7 +10,7 @@ load_dotenv()  # reads .env file into os.environ
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 os.environ["TF_NUM_INTEROP_THREADS"] = "1"
 os.environ["TF_NUM_INTRAOP_THREADS"] = "1"
-
+# results_container = ui.element('div')
 @lru_cache(maxsize=1)
 def get_poi():
     poi = PersonOfInterest()
@@ -21,10 +21,6 @@ def main():
         if not query.value or not str(query.value).strip():
             ui.notify('Enter a search description.', type='warning')
             return
-        results_container.clear()
-        with results_container:
-            ui.spinner(size='lg')
-            ui.label('Loading model and embeddings (first time may take 10–15 min)...')
         # Force UI update; then block on get_poi()
         poi = get_poi()
         search_results = poi.semantic_search(
@@ -32,18 +28,26 @@ def main():
             sim_score=float(sim_score.value),
             results=int(results.value)
         ) # semantic search on database
-        for res in search_results:
-            with ui.grid(columns=3).classes("w-full-w-4xl gap-4"):
-                ui.image(res.payload["image_path"]).classes('rounded-xl max-w-xl')
-                ui.markdown(f"**Score: {res.score:.2f}**")
+        results_area.clear()
+        with results_area:
+            if not search_results:
+                ui.label('No results found.').classes('text-gray-400')
+            else:
+                with ui.grid(columns=3).classes('w-full gap-4'):  # one grid wrapping all results
+                    for res in search_results:
+                        with ui.card().classes(' p-2'):
+                            ui.image(res.payload["image_path"]).classes('rounded-xl w-half')
+                            ui.markdown(f"**Score: {res.score:.2f}**")
+                        
+
 
     with ui.splitter(value=25).classes('w-full h-full') as splitter:
         with splitter.before:
             # Sidebar (left panel) – drag right edge to widen/narrow
             with ui.column().classes("w-full p-4 pr-6"):
-                ui.label('Parameters').classes('text-h6')
+                ui.label('Parameters').classes('text-h6 pb-5')
                 results = ui.slider(min=1, max=50, value=10).props('label-always')
-                ui.label('Similarity threshold').classes('text-h6')
+                ui.label('Similarity threshold').classes('text-h6 m-5')
                 sim_score = ui.slider(min=0, max=1, value=0.2, step=0.05).props('label-always')
 
         with splitter.after:
@@ -57,7 +61,7 @@ def main():
                 placeholder='Enter description (e.g. handsome man in a suit)'). \
                 props('rounded outlined size=80 clearable').classes('max-w-xl ')
                     ui.button("Search", icon='search', on_click=do_search)
-                
+                results_area = ui.column().classes('w-full mt-4') # only for results
     print(query.value)
 @ui.page('/')
 def index():

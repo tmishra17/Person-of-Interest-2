@@ -83,9 +83,9 @@ class PersonOfInterest:
 
         if not self.qdrant_client.collection_exists(collection_name):
             # create collection if it doesn't exist yet
-            spinner = ui.spinner(size='lg')
-            label = ui.label('Loading embeddings into Qdrant (may take 10–15 min)...')
-            spinner.visible = label.visible = True
+            # spinner = ui.spinner(size='lg')
+            # label = ui.label('Loading embeddings into Qdrant (may take 10–15 min)...')
+            # spinner.visible = label.visible = True
             print("Collection not found, creating collection...")
             with ui.row().classes("items-center gap-2"):
                 self.qdrant_client.create_collection(collection_name, 
@@ -118,11 +118,12 @@ class PersonOfInterest:
                     print(f"DEBUG: points: {len(points)} points")              
                     self.qdrant_client.upsert(collection_name, points)
 
-                spinner.visible = label.visible = False
+                # spinner.visible = label.visible = False
                 print("Successfully uploaded Database to Qdrant!")
             
-            ui.notify(f'Successfully Uploading {count} images to Qdrant!', type='positive')
+            # ui.notify(f'Successfully Uploading {count} images to Qdrant!', type='positive')
         else:
-            ui.notify('Collection already exists!', type='positive')
+            # ui.notify('Collection already exists!', type='positive')
+            print("Collection already exists!")
         
 
